@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 9004
   
 spring:
   application:
@@ -15,7 +15,7 @@ spring:
       - id: CORPSEED-SECURITY
         uri: http://localhost:9990
         predicates:
-        - Path=/api/**
+        - Path=/securityService/**
         
         
           
