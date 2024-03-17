@@ -8,14 +8,18 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: LEAD-SERVICE
-        uri: http://localhost:9001
+      # - id: LEAD-SERVICE
+      #   uri: http://localhost:9001
+      #   predicates:
+      #   - Path=/leadService/**
+      # - id: CORPSEED-SECURITY
+      #   uri: http://localhost:9990
+      #   predicates:
+      #   - Path=/securityService/**
+        - id: AzureDeploymentTesting-1
+        uri: http://localhost:8080
         predicates:
-        - Path=/leadService/**
-      - id: CORPSEED-SECURITY
-        uri: http://localhost:9990
-        predicates:
-        - Path=/securityService/**
+        - Path=/**
         
         
           
