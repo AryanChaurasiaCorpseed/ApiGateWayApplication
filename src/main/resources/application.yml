@@ -14,7 +14,8 @@ spring:
         predicates:
         - Path=/leadService/**
       - id: CORPSEED-SECURITY
-        uri: http://localhost:9990
+#        uri: http://localhost:9990
+        uri: https://erp-corpseed-security.azurewebsites.net/
         predicates:
         - Path=/securityService/**
         
