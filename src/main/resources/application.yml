@@ -9,8 +9,8 @@ spring:
     gateway:
       routes:
       - id: LEAD-SERVICE
-#        uri: http://localhost:9001̥
-        uri: https://erp-lead-service.azurewebsites.net
+#        uri: http://localhost:9001
+        uri: https://erp-lead-service.azurewebsites.net/
         predicates:
         - Path=/leadService/**
       - id: CORPSEED-SECURITY
