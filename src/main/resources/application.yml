@@ -1,37 +1,70 @@
+#server:
+#  port: 9004
+#  
+#spring:
+#  application:
+#    name: API-GATEWAY
+#  
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: LEAD-SERVICE
+#        uri: http://localhost:9001
+##        uri: https://erp-lead-service.azurewebsites.net/
+#        predicates:
+#        - Path=/leadService/**
+#      - id: CORPSEED-SECURITY
+#        uri: http://localhost:9990
+##        uri: https://erp-corpseed-security.azurewebsites.net/
+#        predicates:
+#        - Path=/securityService/**
+#      - id: ACCOUNT-SERVICE
+#        uri: http://localhost:9002
+#        predicates: 
+#        - Path=/accountService/**
+#        
+#          
+#        
+#
+#eureka:
+#  instance:
+#    ip-address: true
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka 
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: LEAD-SERVICE
+         uri: http://localhost:9001
+         predicates:
+           - Path=/leadService/**
+         filters:
+           - AuthenticationFilter
+
+
+       - id: CORPSEED-SECURITY
+         uri: http://localhost:9990
+         predicates:
+           - Path=/securityService/**
+         filters:
+           - AuthenticationFilter
+
+       - id: ACCOUNT-SERVICE
+         uri: http://localhost:9002
+         predicates:
+           - Path=/accountService/**
+
+ application:
+   name: API-GATEWAY
 server:
   port: 9004
-  
-spring:
-  application:
-    name: API-GATEWAY
-  
-  cloud:
-    gateway:
-      routes:
-      - id: LEAD-SERVICE
-        uri: http://localhost:9001
-#        uri: https://erp-lead-service.azurewebsites.net/
-        predicates:
-        - Path=/leadService/**
-      - id: CORPSEED-SECURITY
-        uri: http://localhost:9990
-#        uri: https://erp-corpseed-security.azurewebsites.net/
-        predicates:
-        - Path=/securityService/**
-      - id: ACCOUNT-SERVICE
-        uri: http://localhost:9002
-        predicates: 
-        - Path=/accountService/**
-        
-          
-        
-
 eureka:
-  instance:
-    ip-address: true
   client:
-    fetch-registry: true
-    register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka 
+      defaultZone : http://localhost:8761/eureka/	
+
   
