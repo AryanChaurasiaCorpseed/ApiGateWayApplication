@@ -32,9 +32,16 @@ public class JwtUtil {
                    .parseClaimsJws(token).getBody().getSubject();
       }
 
-      public void validateToken(String authToken) {
+      public void validateTokenV1(String authToken) {
         
           Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
+         
+      }
+      public String validateToken(String token) {
+    	 String jwt = Jwts.parserBuilder().setSigningKey(key()).build()
+                  .parseClaimsJws(token).getBody().getSubject();
+    	 System.out.println("jwt . .name . . . "+jwt);
+    	 return jwt;
          
       }
 }
